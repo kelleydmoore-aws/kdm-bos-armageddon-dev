@@ -1,0 +1,17 @@
+Network Architecture
+
+Network Infrastructure
+VPC name == bos_vpc01
+CIDR Block == 10.26.0.0/16
+Public Subnet == 10.26.1.0/24, 10.26.2.0/24
+Private Subnet == 10.26.101.0/24, 10.26.102.0/24
+Availability Zones == us-east-1a, us-east-1b
+
+Security Groups: RDS and EC2
+
+RDS
+MySQL from EC2
+
+EC2
+Student adds inbound rules (HTTP 80, SSH 22 from local IP address)
+
