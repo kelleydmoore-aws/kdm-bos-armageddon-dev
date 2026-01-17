@@ -69,3 +69,4 @@ resource "aws_vpc_security_group_egress_rule" "rds_all_traffic_ipv4" {
   ip_protocol       = "-1" # All protocols and ports
   description       = "Allow all outbound traffic"
 }
+
