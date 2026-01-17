@@ -6,22 +6,22 @@
 data "aws_caller_identity" "current" {}
 
 # S3 Bucket for incident reports
-resource "aws_s3_bucket" "bos_ir_reports_bucket01" {
-  bucket = "${var.project_name}-ir-reports-${data.aws_caller_identity.current.account_id}"
+# resource "aws_s3_bucket" "bos_ir_reports_bucket01" {
+#   bucket = "${var.project_name}-ir-reports-${data.aws_caller_identity.current.account_id}"
 
-  tags = {
-    Name = "${var.project_name}-ir-reports-bucket01"
-  }
-}
+#   tags = {
+#     Name = "${var.project_name}-ir-reports-bucket01"
+#   }
+# }
 
 # Block all public access
-resource "aws_s3_bucket_public_access_block" "bos_ir_reports_pab01" {
-  bucket                  = aws_s3_bucket.bos_ir_reports_bucket01.id
-  block_public_acls       = true
-  block_public_policy     = true
-  ignore_public_acls      = true
-  restrict_public_buckets = true
-}
+# resource "aws_s3_bucket_public_access_block" "bos_ir_reports_pab01" {
+#   bucket                  = aws_s3_bucket.bos_ir_reports_bucket01.id
+#   block_public_acls       = true
+#   block_public_policy     = true
+#   ignore_public_acls      = true
+#   restrict_public_buckets = true
+# }
 
 # IAM Role for Lambda
 resource "aws_iam_role" "bos_ir_lambda_role01" {
@@ -74,14 +74,14 @@ resource "aws_iam_policy" "bos_ir_lambda_policy01" {
         Action   = ["secretsmanager:GetSecretValue", "secretsmanager:DescribeSecret"]
         Resource = "arn:aws:secretsmanager:*:${data.aws_caller_identity.current.account_id}:secret:${var.project_name}/rds/mysql*"
       },
-      {
-        Effect = "Allow"
-        Action = ["s3:PutObject", "s3:PutObjectAcl", "s3:GetObject", "s3:ListBucket"]
-        Resource = [
-          aws_s3_bucket.bos_ir_reports_bucket01.arn,
-          "${aws_s3_bucket.bos_ir_reports_bucket01.arn}/*"
-        ]
-      },
+      # {
+      #   Effect = "Allow"
+      #   Action = ["s3:PutObject", "s3:PutObjectAcl", "s3:GetObject", "s3:ListBucket"]
+      #   Resource = [
+      #     aws_s3_bucket.bos_ir_reports_bucket01.arn,
+      #     "${aws_s3_bucket.bos_ir_reports_bucket01.arn}/*"
+      #   ]
+      # },
       {
         Effect   = "Allow"
         Action   = ["bedrock:InvokeModel"]
@@ -151,7 +151,7 @@ resource "aws_lambda_permission" "bos_allow_sns_invoke01" {
 }
 
 # Output the report bucket name
-output "bos_ir_reports_bucket" {
-  value       = aws_s3_bucket.bos_ir_reports_bucket01.bucket
-  description = "S3 bucket where auto-generated incident reports are stored"
-}
+# output "bos_ir_reports_bucket" {
+#   value       = aws_s3_bucket.bos_ir_reports_bucket01.bucket
+#   description = "S3 bucket where auto-generated incident reports are stored"
+# }
