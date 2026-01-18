@@ -18,8 +18,8 @@ locals {
 
 # 1. Reference the existing hosted zone (do NOT create a new one)
 data "aws_route53_zone" "kelleydmooreaws_zone" {
-  #name         = "kelleydmooreaws.com."          # note the trailing dot
-  #private_zone = false
-  #zone_id = "Z0825167K1N04S2RCG6V"
+  name         = "kelleydmoore.click."          # note the trailing dot
+  private_zone = false
+  zone_id = "Z004004917MSKWN8VZKI"
 }
 

@@ -80,17 +80,17 @@ variable "db_password" {
 variable "sns_email_endpoint" {
   description = "Email for SNS subscription (PagerDuty simulation)."
   type        = string
-  default     = "larrygharris76@gmail.com" # TODO: student supplies
+  default     = "kelleydmoore@gmail.com" # TODO: student supplies
 }
 
 variable "domain_name" {
-  description = "Base domain students registered (e.g., larrryharrisaws.com)."
+  description = "Base domain students registered (e.g., kelleydmoore.click)."
   type        = string
-  default     = "larrryharrisaws.com"
+  default     = "kelleydmoore.click"
 }
 
 variable "app_subdomain" {
-  description = "App hostname prefix (e.g., app.larrryharrisaws.com)."
+  description = "App hostname prefix (e.g., app.kelleydmoore.click)."
   type        = string
   default     = "app"
 }

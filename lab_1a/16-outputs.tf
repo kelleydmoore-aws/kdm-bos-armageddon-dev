@@ -63,9 +63,9 @@ output "bos_target_group_arn" {
   value = aws_lb_target_group.bos_tg01.arn
 }
 
-#output "kelleydmooreaws_acm_cert_arn" {
-#  value = aws_acm_certificate.kelleydmooreaws_cert.arn
-#}
+output "kelleydmooreaws_acm_cert_arn" {
+ value = aws_acm_certificate.kelleydmooreaws_cert.arn
+}
 
 output "bos_waf_arn" {
   value = var.enable_waf ? aws_wafv2_web_acl.bos_waf01[0].arn : null
@@ -80,6 +80,6 @@ output "bos_ir_reports_bucket" {
   value = aws_s3_bucket.bos_ir_reports_bucket01.bucket
 }
 
-#output "kelleydmooreaws_route53_zone_id" { value = local.kelleydmooreaws_zone_id }
+output "kelleydmooreaws_route53_zone_id" { value = local.kelleydmooreaws_zone_id }
 
-#output "kelleydmooreaws_app_url_https" { value = "https://${var.app_subdomain}.${var.domain_name}" }
+output "kelleydmooreaws_app_url_https" { value = "https://${var.app_subdomain}.${var.domain_name}" }

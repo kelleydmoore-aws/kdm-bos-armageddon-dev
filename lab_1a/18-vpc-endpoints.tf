@@ -29,7 +29,7 @@ resource "aws_vpc_endpoint" "bos_vpce_ssm01" {
   private_dns_enabled = true
 
   subnet_ids         = aws_subnet.bos_private_subnets[*].id
-  security_group_ids = [aws_security_group.bos_vpce_sg01.id]
+  # security_group_ids = [aws_security_group.bos_vpce_sg01.id]
 
   tags = {
     Name = "${local.bos_prefix}-vpce-ssm01"
